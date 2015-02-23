@@ -75,8 +75,8 @@ def radar_factory(num_vars, frame='circle'):
                 y = np.concatenate((y, [y[0]]))
                 line.set_data(x, y)
 
-        def set_varlabels(self, labels):
-            self.set_thetagrids(theta * 180/np.pi, labels)
+        def set_varlabels(self, labels, **kwargs):
+            self.set_thetagrids(theta * 180/np.pi, labels, **kwargs)
 
         def _gen_axes_patch(self):
             return self.draw_patch()
@@ -182,6 +182,7 @@ if __name__ == '__main__':
         for d, color in zip(data[title], colors):
             ax.plot(theta, d, color=color)
             ax.fill(theta, d, facecolor=color, alpha=0.25)
+        #if you want to use Japanese labels, use fontproperties in the command below
         ax.set_varlabels(spoke_labels)
 
     # add legend relative to top-left plot
